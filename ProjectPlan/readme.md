@@ -6,8 +6,18 @@ A PokeDex web application that will allow users to create and store homebrew Pok
 ## Technical Description
 I will be using Entity Framework to perform CRUD operations against a db table that will be storing PokeDex entries. I will also utilize REST to make requests to PokeAPI. PokeAPI data will be parsed and displayed to the user.
 
-## Visuals: 
-![Alt text](./visuals/table_structure.png "test img")
+## Visuals:
+### Home Page Layout
+![Alt text](./visuals/home_layout.png "home page layout image")
+
+### Add Pages Layout
+![Alt text](./visuals/add_layout.png "add pages layout image")
+
+### Log Page Layout
+![Alt text](./visuals/log_layout.png "log page layout image")
+
+### Table Structure
+![Alt text](./visuals/table_structure.png "db table structure image")
 
 ## Requirements:
 Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
