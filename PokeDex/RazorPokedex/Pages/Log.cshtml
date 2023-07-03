@@ -1,0 +1,34 @@
+﻿@page
+@model RazorPokedex.Pages.LogModel
+@{
+}
+
+<h1>Logged PokeDex Entries</h1>
+
+<form method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name" />
+
+    <label for="type1">Primary Type</label>
+    <input type="text" name="type1" />
+
+    <label for="type2">Secondary Type</label>
+    <input type="text" name="type2" />
+
+    <label for="height">Height in centimeters</label>
+    <input type="number" name="height" />
+
+    <label for="weight">Weight in kilograms</label>
+    <input type="number" name="weight" />
+
+    @*    <label for="ImageURL">Image</label>
+    <input type="text" name="imageURL" />*@
+
+    <label for="category">Category</label>
+    <input type="text" name="category" />
+
+    <label for="flavorTXT">FlavorTXT</label>
+    <input type="text" name="flavorTXT" />
+
+    <button type="submit">Add</button>
+</form>
