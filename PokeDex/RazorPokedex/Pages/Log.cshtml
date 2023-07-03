@@ -1,34 +1,76 @@
 ﻿@page
+@using RazorPokedex.Data;
 @model RazorPokedex.Pages.LogModel
 @{
-}
+    <h1>Logged PokeDex Entries</h1>
 
-<h1>Logged PokeDex Entries</h1>
+    <form method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" />
 
-<form method="post">
-    <label for="name">Name</label>
-    <input type="text" name="name" />
+        <label for="type1">Primary Type</label>
+        <input type="text" name="type1" />
 
-    <label for="type1">Primary Type</label>
-    <input type="text" name="type1" />
+        <label for="type2">Secondary Type</label>
+        <input type="text" name="type2" />
 
-    <label for="type2">Secondary Type</label>
-    <input type="text" name="type2" />
+        <label for="height">Height in centimeters</label>
+        <input type="number" name="height" />
 
-    <label for="height">Height in centimeters</label>
-    <input type="number" name="height" />
+        <label for="weight">Weight in kilograms</label>
+        <input type="number" name="weight" />
 
-    <label for="weight">Weight in kilograms</label>
-    <input type="number" name="weight" />
-
-    @*    <label for="ImageURL">Image</label>
+        @*    <label for="ImageURL">Image</label>
     <input type="text" name="imageURL" />*@
 
-    <label for="category">Category</label>
-    <input type="text" name="category" />
+        <label for="category">Category</label>
+        <input type="text" name="category" />
 
-    <label for="flavorTXT">FlavorTXT</label>
-    <input type="text" name="flavorTXT" />
+        <label for="flavorTXT">FlavorTXT</label>
+        <input type="text" name="flavorTXT" />
 
-    <button type="submit">Add</button>
-</form>
+        <button type="submit">Add</button>
+    </form>
+
+    // Table is a bootstap class
+    // Model.People refers to our PeopleModel that is bound to this cshtml
+    // thead = top of the tbale
+    // tr = table row
+    // th = individual column headers
+            // td = table data
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sprite</th>
+                <th>Name</th>
+                <th>Type1</th>
+                <th>Type2</th>
+
+                <th>IsHomebrew</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (PokeDexEntry p in Model.DexEntries)
+            {
+                <tr>
+                    <td>
+                        <img src="@p.ImageURL" alt="Image for @p.Name" width="25" height="25" />
+                    </td>
+                    <td>@p.Name</td>
+                    <td>@p.Type1</td>
+                    <td>@p.Type2</td>
+                    <td>@p.IsHomebrew</td>
+                    <td>
+                        <button>Details</button>
+                        <button>Delete</button>
+                        <button>Edit</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

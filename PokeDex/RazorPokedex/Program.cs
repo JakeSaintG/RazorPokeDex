@@ -29,4 +29,7 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+//TODO: Set up DbUtils dependency injection style so I can use CheckDbExist()
+
+
 app.Run();

@@ -31,7 +31,7 @@ public class LogModel : PageModel
         NewEntry.IsHomebrew = true;
         
         //TODO: Placeholder; hardcoded for now
-        NewEntry.ImageURL = "https://archives.bulbagarden.net/media/upload/9/98/Missingno_RB.png";
+        NewEntry.ImageURL = "https://www.serebii.net/pokearth/sprites/rb/000.png";
 
         _context.PokeDexEntries.Add(NewEntry);
         _context.SaveChanges();
