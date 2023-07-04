@@ -1,0 +1,48 @@
+﻿@page
+@using RazorPokedex.Data;
+@model RazorPokedex.Pages.LogModel
+@{
+    <h1>Logged PokéDex Entries</h1>
+
+    // Table is a bootstap class
+    // Model.People refers to our PeopleModel that is bound to this cshtml
+    // thead = top of the tbale
+    // tr = table row
+    // th = individual column headers
+            // td = table data
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sprite</th>
+                <th>Name</th>
+                <th>Type1</th>
+                <th>Type2</th>
+
+                <th>IsHomebrew</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (PokeDexEntry p in Model.DexEntries)
+            {
+                <tr>
+                    <td>
+                        <img src="@p.ImageURL" alt="Image for @p.Name" width="25" height="25" />
+                    </td>
+                    <td>@p.Name</td>
+                    <td>@p.Type1</td>
+                    <td>@p.Type2</td>
+                    <td>@p.IsHomebrew</td>
+                    <td>
+                        <button>Details</button>
+                        <button>Delete</button>
+                        <button>Edit</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

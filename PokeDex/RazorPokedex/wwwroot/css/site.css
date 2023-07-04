@@ -1,3 +1,31 @@
+/*
+    Todo: palatte vars (based on maroon)
+
+    primary: #851800 (maroon)
+    Secondary: #3F4FFC (blue)
+
+    tbd: #DA16F0
+    tbd: #BF0942
+*/
+:root {
+    --primary: #851800;
+    --secondary: #D9091E;
+    --accent: #500AF8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: var(--primary);
+}
+
+.nav-link {
+    margin-right: 1rem;
+    border-radius: .5rem;
+}
+
 html {
   font-size: 14px;
 }
@@ -19,4 +47,48 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.add-pkmn {
+    background-color: var(--primary);
+    border-radius: 1rem;
+    color: white;
+    display: flex;
+    padding: 2rem;
+}
+
+.add-cust {
+    margin: auto;
+    text-align: center;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-cust > p {
+    margin: 0;
+}
+
+.add-cust > a {
+    text-decoration: none;
+    color: white;
+    font-size: x-large;
+    margin: 0;
+    border: solid white 1px;
+    border-radius: .5rem;
+    height: 42px;
+    width: 48px;
+}
+
+.add-cust > a:hover,
+.nav-link:hover {
+    background-color: var(--secondary);
+}
+
+.add-cust > a:active,
+.nav-link:active {
+    background-color: var(--accent);
 }

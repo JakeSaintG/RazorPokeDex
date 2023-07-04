@@ -1,10 +1,16 @@
-﻿@page
+﻿@*Attribute*@
+@page
+
+@*Model binding*@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
+<h1>PokéDex</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="center-block add-pkmn">
+    <div asp-page="/Log" class="add-cust">
+        <p>Add Custom <br /> Pokémon</p>
+        <a asp-area="" asp-page="/AddPkmn">+</a>
+    </div>
+</section>
