@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using RazorPokedex.Data;
+using RazorPokedex.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<Context>();
+builder.Services.AddScoped<IDbUtils, DbUtils>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -29,7 +31,11 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-//TODO: Set up DbUtils dependency injection style so I can use CheckDbExist()
+using (var serviceScope = app.Services.CreateScope())
+{
+    var dbUtils = serviceScope.ServiceProvider.GetService<IDbUtils>();
+    dbUtils.CheckDbExist();
+}
 
 
 app.Run();

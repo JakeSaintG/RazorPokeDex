@@ -2,7 +2,7 @@
 
 namespace RazorPokedex.Utils;
 
-public class DbUtils
+public class DbUtils : IDbUtils
 {
     private readonly Context _context;
 
@@ -13,9 +13,9 @@ public class DbUtils
 
     public void CheckDbExist()
     {
-        string path = Environment.CurrentDirectory.ToString() + "/Inventory.db";
+        string path = Directory.GetParent(Environment.CurrentDirectory.ToString()) + "\\RazorPokedex.Data\\Pokedex.db";
 
-        if (!System.IO.File.Exists(path))
+        if (!File.Exists(path))
             _context.Database.EnsureCreated();
     }
 }
