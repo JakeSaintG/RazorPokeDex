@@ -1,0 +1,59 @@
+.form-bootstrap-override {
+    display: grid;
+    grid-template-areas:
+        "img name name name . category"
+        "img type1 type2 . height weight"
+        "flvr-txt flvr-txt flvr-txt flvr-txt flvr-txt flvr-txt"
+        ". . . . . add";
+    background-color: var(--primary);
+    border-radius: 1rem;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+img {
+    border: solid red 1px;
+    grid-area: img;
+}
+
+.name {
+    grid-area: name;
+}
+
+.type {
+}
+
+.type-1 {
+    grid-area: type1;
+}
+
+.type-2 {
+    grid-area: type2;
+}
+
+.height {
+    grid-area: height;
+}
+
+.weight {
+    grid-area: weight;
+}
+
+.category {
+    grid-area: category;
+}
+
+.flavor-txt {
+    grid-area: flvr-txt;
+}
+
+button {
+    grid-area: add;
+}
