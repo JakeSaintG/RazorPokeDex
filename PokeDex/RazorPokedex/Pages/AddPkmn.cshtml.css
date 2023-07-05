@@ -1,10 +1,11 @@
+/*
+    TODO: mobile formatting
+
+*/
+
 .form-bootstrap-override {
+    grid-template-columns: 62%; /*I feel like I'm fighting bootstrap here and I'm not sure why (yet)*/
     display: grid;
-    grid-template-areas:
-        "img name name name . category"
-        "img type1 type2 . height weight"
-        "flvr-txt flvr-txt flvr-txt flvr-txt flvr-txt flvr-txt"
-        ". . . . . add";
     background-color: var(--primary);
     border-radius: 1rem;
     color: white;
@@ -16,18 +17,17 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    padding: 0 1rem;
 }
 
-img {
+.add-img-placeholder {
     border: solid red 1px;
     grid-area: img;
+    margin-left: 1rem;
 }
 
 .name {
     grid-area: name;
-}
-
-.type {
 }
 
 .type-1 {
@@ -36,6 +36,13 @@ img {
 
 .type-2 {
     grid-area: type2;
+}
+
+.form-bootstrap-override::after {
+    content: '';
+    grid-area: space;
+    display: block;
+    margin: 0 2rem;
 }
 
 .height {
@@ -56,4 +63,73 @@ img {
 
 button {
     grid-area: add;
+    margin-right: 1rem;
 }
+
+@media (max-width: 991px) {
+    .form-bootstrap-override {
+        grid-template-areas:
+            "img img"
+            "name name"
+            "category category"
+            "type1 type2"
+            "height weight"
+            "flvr-txt flvr-txt"
+            "add add";
+        padding: 1rem;
+    }
+
+    button {
+        margin: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .form-bootstrap-override {
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+            "img flvr-txt"
+            "img flvr-txt"
+            "name category"
+            "type1 type2"
+            "height weight"
+            "add add";
+        padding: 1rem;
+    }
+
+    button {
+        margin: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    
+    .form-bootstrap-override {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "img name name name category"
+            "img type1 type2 height weight"
+            "flvr-txt flvr-txt flvr-txt flvr-txt flvr-txt"
+            ". . . . add";
+        padding: 2rem;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .form-bootstrap-override {
+        grid-template-areas:
+            "img name name name name category"
+            "img type1 type2 space height weight"
+            "flvr-txt flvr-txt flvr-txt flvr-txt flvr-txt flvr-txt"
+            ". . . . . add";
+        padding: 2rem;
+        text-align: center;
+    }
+}
+
+/* TODO: Figure out Ultrawide later
+@media (min-width: 1526px) {
+
+}
+*/
