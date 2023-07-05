@@ -49,6 +49,10 @@ body {
   margin-bottom: 60px;
 }
 
+.pokeball-icon {
+    margin-right: 1rem;
+}
+
 .add-pkmn {
     background-color: var(--primary);
     border-radius: 1rem;

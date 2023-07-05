@@ -9,7 +9,6 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IDbUtils, DbUtils>();
 
-// Add services to the container.
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -36,6 +35,5 @@ using (var serviceScope = app.Services.CreateScope())
     var dbUtils = serviceScope.ServiceProvider.GetService<IDbUtils>();
     dbUtils.CheckDbExist();
 }
-
 
 app.Run();
