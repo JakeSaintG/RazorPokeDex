@@ -1,8 +1,3 @@
-/*
-    TODO: mobile formatting
-
-*/
-
 .form-bootstrap-override {
     grid-template-columns: 62%; /*I feel like I'm fighting bootstrap here and I'm not sure why (yet)*/
     display: grid;
