@@ -3,16 +3,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPokedex.Data;
 
-namespace RazorPokedex.Pages;
+namespace RazorPokedex.Pages.DexEntryActions;
 
-public class DexEntryDetailsModel : PageModel
+public class DetailsModel : PageModel
 {
     private readonly Context _context;
     public PokeDexEntry DexEntry { get; set; } = new PokeDexEntry();
 
     public string Header { get; set; }
 
-    public DexEntryDetailsModel(Context context)
+    public DetailsModel(Context context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public class DexEntryDetailsModel : PageModel
     {
         DexEntry = await _context.PokeDexEntries.SingleOrDefaultAsync(x => x.Id == id);
 
-        if (DexEntry != null) 
+        if (DexEntry != null)
         {
             Header = $"Loaded! {DexEntry.Name}";
         }
