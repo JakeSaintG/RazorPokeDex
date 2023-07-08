@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPokedex", "RazorPokedex\RazorPokedex.csproj", "{BE9C9F82-A714-4990-AFD2-B1C50E9A9DB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPokedex.Data", "RazorPokedex.Data\RazorPokedex.Data.csproj", "{19238C82-28A1-4124-B090-EF474282F7C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPokedex.Data", "RazorPokedex.Data\RazorPokedex.Data.csproj", "{19238C82-28A1-4124-B090-EF474282F7C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

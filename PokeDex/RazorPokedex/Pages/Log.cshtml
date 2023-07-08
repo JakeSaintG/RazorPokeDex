@@ -36,11 +36,8 @@
                     <td>@p.Type2</td>
                     <td>@p.IsHomebrew</td>
                     <td>
-                        <button>Details</button>
-                        <form method="post">
-                            <button asp-page-handler="DeleteByIdAsync">Delete</button>
-                            <input type="hidden" name="id" value="@p.Id" />
-                        </form>
+                        <a asp-page="./DexEntryDetails" asp-route-id="@p.Id">Details</a>
+                        <a asp-page="./DexEntryActions/Delete" asp-route-id="@p.Id">Delete</a>
                         <button>Edit</button>
                     </td>
                 </tr>
