@@ -34,6 +34,6 @@ public class AddPkmnModel : PageModel
         _context.PokeDexEntries.Add(NewEntry);
         _context.SaveChanges();
 
-        return RedirectToPage();
+        return RedirectToPage("./Log");
     }
 }

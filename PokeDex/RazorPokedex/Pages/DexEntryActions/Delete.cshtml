@@ -1,0 +1,24 @@
+﻿@page "{id:guid?}"
+@model RazorPokedex.Pages.DexEntryActions.DeleteModel
+@{
+    <h1>Are you sure?</h1>
+    <div class="center-block">
+        <p>
+            Researching for the PokeDex is a hard job! Mistakes happen. 
+            <br />
+            Before you delete this entry, make sure that you truly want to.
+        </p>
+        <p>
+            Delete @Model.DexEntry.Name?
+        </p>
+
+        <form asp-page-handler="Delete" method="post">
+            <button>Click to post</button>
+            <input type="hidden" name="id" value="@Model.DexEntry.Id" />
+        </form>
+    </div>
+}
+@*<form method="post" asp-page-handler="DeleteByIdAsync">
+    <button>Remove</button>
+    <input type="hidden" name="id" value="TestString" />
+</form>*@

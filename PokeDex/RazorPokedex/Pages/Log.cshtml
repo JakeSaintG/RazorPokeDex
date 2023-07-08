@@ -2,7 +2,7 @@
 @using RazorPokedex.Data;
 @model RazorPokedex.Pages.LogModel
 @{
-    <h1>Logged PokéDex Entries</h1>
+    <h1>@Model.Header</h1>
 
     // Table is a bootstap class
     // Model.People refers to our PeopleModel that is bound to this cshtml
@@ -36,8 +36,8 @@
                     <td>@p.Type2</td>
                     <td>@p.IsHomebrew</td>
                     <td>
-                        <button>Details</button>
-                        <button>Delete</button>
+                        <a asp-page="./DexEntryActions/Details" asp-route-id="@p.Id">Details</a>
+                        <a asp-page="./DexEntryActions/Delete" asp-route-id="@p.Id">Delete</a>
                         <button>Edit</button>
                     </td>
                 </tr>
@@ -45,4 +45,3 @@
         </tbody>
     </table>
 }
-
