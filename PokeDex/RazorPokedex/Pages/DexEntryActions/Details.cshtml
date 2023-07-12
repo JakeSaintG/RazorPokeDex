@@ -1,8 +1,30 @@
-﻿@page "{id:guid?}" 
+﻿@page "{id:guid?}"
 @*https://www.learnrazorpages.com/miscellaneous/constraints*@
 
 @model DetailsModel
 @{
     <h1>PokeDex Entry</h1>
-    <p>Imagine that you are seeing the details for @Model.DexEntry.Name</p>
+    <section class="center-block gb-body">
+        <div class="gb-screen">
+            <div class="pwr">
+                <p class="pwr-sym">>>></p>
+                <p class="pwr-light">Power</p>
+            </div>
+            <div class="gb-display">
+                <img src="@Model.DexEntry.ImageURL" alt="Image of @Model.DexEntry.Name" />
+                <p>@Model.DexEntry.Name</p>
+                <p>@Model.DexEntry.Category</p>
+
+                <p>@Model.DexEntry.Type1</p>
+                <p>@Model.DexEntry.Type2</p>
+
+                <p>@Model.DexEntry.Height</p>
+                <p>@Model.DexEntry.Weight</p>
+
+                <p>@Model.DexEntry.IsHomebrew</p>
+
+                <p>@Model.DexEntry.FlavorTXT</p>
+            </div>
+        </div>
+    </section>
 }
