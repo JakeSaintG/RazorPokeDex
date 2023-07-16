@@ -20,9 +20,9 @@ I will be using Entity Framework to perform CRUD operations against a db table t
 ![Alt text](./visuals/table_structure.png "db table structure image")
 
 ## Requirements:
-Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
-Add comments to your code explaining how you are using at least 2 of the solid principles
-Query your database using a raw SQL query, not EF
+- Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program.
+- Make your application asynchronous.
+- Query your database using a raw SQL query, not EF.
 
 ## Stretch Goals:
 Make a generic class and use it
