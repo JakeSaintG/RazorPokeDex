@@ -21,13 +21,9 @@ public class DetailsModel : PageModel
     {
         DexEntry = await _context.PokeDexEntries.SingleOrDefaultAsync(x => x.Id == id);
 
-        if (DexEntry != null)
+        if (DexEntry == null)
         {
-            Header = $"Loaded! {DexEntry.Name}";
-        }
-        else
-        {
-            Header = "Not Loaded!";
+            Header = "MissingNo.";
         }
     }
 }

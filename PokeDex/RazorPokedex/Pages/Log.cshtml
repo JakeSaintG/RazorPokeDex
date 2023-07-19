@@ -38,7 +38,11 @@
                     <td>
                         <a asp-page="./DexEntryActions/Details" asp-route-id="@p.Id">Details</a>
                         <a asp-page="./DexEntryActions/Delete" asp-route-id="@p.Id">Delete</a>
-                        <button>Edit</button>
+                        @if (p.IsHomebrew)
+                        {
+                            //Only allow Homebrew pokemon to edited
+                            <a asp-page="./AddOrEditPkmn" asp-route-id="@p.Id">Edit</a>
+                        }  
                     </td>
                 </tr>
             }

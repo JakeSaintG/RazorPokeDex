@@ -1,0 +1,49 @@
+﻿.gb-body {
+    display: flex;
+    height: 70vh;
+    background-color: rgb(93, 39, 171);
+}
+
+.gb-screen {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    display: flex;
+    border-radius: .5rem;
+    background-color: rgb(24, 23, 23);
+}
+
+.gb-screen::after {
+    width: 44px;
+    margin: auto 10px auto 0;
+    content: "";
+    color: white;
+}
+
+.gb-display {
+    border: solid 1px green;
+    margin: auto 10px;
+    width: 90%;
+    height: 90%;
+    background-color: rgb(123, 185, 71);
+}
+
+.pwr {
+    margin: auto 0 auto 10px;
+    padding-bottom: 75px;
+    color: white;
+}
+
+.pwr-sym {
+    margin-bottom: 0;
+}
+
+.pwr-sym::before {
+    color: red;
+    content: "";
+    background-color: red;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}

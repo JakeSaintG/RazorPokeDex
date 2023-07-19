@@ -13,12 +13,8 @@
         </p>
 
         <form asp-page-handler="Delete" method="post">
-            <button>Click to post</button>
+            <button>Confirm Delete</button>
             <input type="hidden" name="id" value="@Model.DexEntry.Id" />
         </form>
     </div>
 }
-@*<form method="post" asp-page-handler="DeleteByIdAsync">
-    <button>Remove</button>
-    <input type="hidden" name="id" value="TestString" />
-</form>*@
