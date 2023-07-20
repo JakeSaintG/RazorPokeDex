@@ -2,7 +2,7 @@
 @using RazorPokedex.Data;
 @model RazorPokedex.Pages.AddOrEditPkmnModel
 @{
-    <h1>Add to PokéDex</h1>
+    <h1>@Model.PageHeader</h1>
     <form method="post">
         <div class="form-bootstrap-override">
 
@@ -11,33 +11,33 @@
             </div>
             <div class="name form-field">
                 <label for="name">Name</label>
-                <input type="text" name="name" maxlength="20" />
+                <input type="text" name="name" maxlength="20" value="@Model.AddOrEditEntry?.Name"/>
             </div>
             <div class="category form-field">
                 <label for="category">Category</label>
-                <input type="text" name="category" maxlength="20" />
+                <input type="text" name="category" maxlength="20" value="@Model.AddOrEditEntry?.Category" />
             </div>
             <div class="type type-1 form-field">
                 <label for="type1">Primary Type</label>
-                <input type="text" name="type1" maxlength="10" />
+                <input type="text" name="type1" maxlength="10" value="@Model.AddOrEditEntry?.Type1" />
             </div>
             <div class="type type-2 form-field">
                 <label for="type2">Secondary Type</label>
-                <input type="text" name="type2" maxlength="10" />
+                <input type="text" name="type2" maxlength="10" value="@Model.AddOrEditEntry?.Type2" />
             </div>
             <div class="height form-field">
                 <label for="height">Height in centimeters</label>
-                <input type="number" name="height" min="2" max="110" />
+                <input type="number" name="height" min="2" max="1999" value="@Model.AddOrEditEntry?.Height" />
             </div>
             <div class="weight form-field">
                 <label for="weight">Weight in grams</label>
-                <input type="number" name="weight" min="1" max="1100" />
+                <input type="number" name="weight" min="1" max="1100" value="@Model.AddOrEditEntry?.Weight" />
             </div>
             <div class="flavor-txt form-field">
                 <label for="flavorTXT">FlavorTXT</label>
-                <textarea name="flavorTXT"></textarea>
+                <textarea name="flavorTXT">@Model.AddOrEditEntry?.FlavorTXT</textarea>
             </div>
-            <button type="submit">Add</button>
+            <button type="submit">Save</button>
         </div>
     </form>
 
