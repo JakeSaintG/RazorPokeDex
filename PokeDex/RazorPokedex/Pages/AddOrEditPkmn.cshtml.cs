@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPokedex.Data;
+using System.Text.RegularExpressions;
 
 namespace RazorPokedex.Pages;
 
@@ -9,6 +10,26 @@ public class AddOrEditPkmnModel : PageModel
 {
 
     public string PageHeader { get; set; } = "Add to PokéDex.";
+    public List<string> Types { get; } = new List<string>(){ 
+        "Normal", 
+        "Fire", 
+        "Water", 
+        "Grass",
+        "Electric",
+        "Ice",
+        "Fighting",
+        "Poison",
+        "Ground",
+        "Flying",
+        "Psychic",
+        "Bug",
+        "Rock",
+        "Ghost",
+        "Dark",
+        "Dragon",
+        "Steel",
+        "Fairy"
+    };
     private readonly Context _context;
 
     [BindProperty]
@@ -31,20 +52,23 @@ public class AddOrEditPkmnModel : PageModel
     //IActionResult allows Razor to redirect to a page at the end of execution
     public IActionResult OnPost()
     {
+        var editedEntry = new PokeDexEntry();
 
         if (AddOrEditEntry.Id == null)
         {
-            AddOrEditEntry.Id = Guid.NewGuid().ToString();
-            AddOrEditEntry.IsHomebrew = true;
+            editedEntry = AddOrEditEntry;
+
+            editedEntry.Id = Guid.NewGuid().ToString();
+            editedEntry.IsHomebrew = true;
 
             //TODO: Placeholder; hardcoded for now
-            AddOrEditEntry.ImageURL = "https://www.serebii.net/pokearth/sprites/rb/000.png";
+            editedEntry.ImageURL = "https://www.serebii.net/pokearth/sprites/rb/000.png";
 
-            _context.PokeDexEntries.Add(AddOrEditEntry);
+            _context.PokeDexEntries.Add(editedEntry);
         }
         else
         {
-            var editedEntry = _context.PokeDexEntries.FromSql($"SELECT * FROM PokeDexEntries WHERE Id = {AddOrEditEntry.Id} LIMIT 1").Single();
+            editedEntry = _context.PokeDexEntries.FromSql($"SELECT * FROM PokeDexEntries WHERE Id = {AddOrEditEntry.Id} LIMIT 1").Single();
 
             //TODO: Temporary. Merge these objs.
             if (editedEntry.Name != AddOrEditEntry.Name)
@@ -68,6 +92,9 @@ public class AddOrEditPkmnModel : PageModel
             if (editedEntry.FlavorTXT != AddOrEditEntry.FlavorTXT)
                 editedEntry.FlavorTXT = AddOrEditEntry.FlavorTXT;
         }
+
+        if (editedEntry.Type1 == editedEntry.Type2)
+            editedEntry.Type2 = null;
 
         _context.SaveChanges();
 

@@ -19,11 +19,36 @@
             </div>
             <div class="type type-1 form-field">
                 <label for="type1">Primary Type</label>
-                <input type="text" name="type1" maxlength="10" value="@Model.AddOrEditEntry?.Type1" />
+                <select name="type1">
+                    @foreach (string t in Model.Types)
+                    {
+                        @if (t.ToLower() == @Model.AddOrEditEntry?.Type1)
+                        {
+                            <option selected value="@t.ToLower()">@t</option>
+                        }
+                        else
+                        {
+                            <option value="@t.ToLower()">@t</option>
+                        }
+                    }
+                </select> 
             </div>
             <div class="type type-2 form-field">
                 <label for="type2">Secondary Type</label>
-                <input type="text" name="type2" maxlength="10" value="@Model.AddOrEditEntry?.Type2" />
+                <select name="type2">
+                    <option value="">None</option>
+                    @foreach (string t in Model.Types)
+                    {
+                        @if (t.ToLower() == @Model.AddOrEditEntry?.Type2)
+                        {
+                            <option selected value="@t.ToLower()">@t</option>
+                        }
+                        else
+                        {
+                            <option value="@t.ToLower()">@t</option>
+                        }
+                    }
+                </select>
             </div>
             <div class="height form-field">
                 <label for="height">Height in centimeters</label>

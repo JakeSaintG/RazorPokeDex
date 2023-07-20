@@ -16,8 +16,7 @@
             <tr>
                 <th>Sprite</th>
                 <th>Name</th>
-                <th>Type1</th>
-                <th>Type2</th>
+                <th>Type</th>
 
                 <th>IsHomebrew</th>
                 <th>Actions</th>
@@ -32,8 +31,22 @@
                         <img src="@p.ImageURL" alt="Image for @p.Name" width="25" height="25" />
                     </td>
                     <td>@p.Name</td>
-                    <td>@p.Type1</td>
-                    <td>@p.Type2</td>
+
+                    @if (@p.Type2 == null)
+                    {
+                        <td class="types">
+                            <p class="type-icon @p.Type1">@p.Type1</p>
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="types">
+                            <p class="type-icon @p.Type1">@p.Type1</p>
+                            &nbsp;
+                            <p class="type-icon @p.Type2">@p.Type2</p>
+                        </td>
+                    }
+
                     <td>@p.IsHomebrew</td>
                     <td>
                         <a asp-page="./DexEntryActions/Details" asp-route-id="@p.Id">Details</a>
@@ -42,7 +55,7 @@
                         {
                             //Only allow Homebrew pokemon to edited
                             <a asp-page="./AddOrEditPkmn" asp-route-id="@p.Id">Edit</a>
-                        }  
+                        }
                     </td>
                 </tr>
             }

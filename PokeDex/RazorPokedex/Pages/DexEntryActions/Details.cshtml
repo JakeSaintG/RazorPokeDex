@@ -15,8 +15,12 @@
                 <p>@Model.DexEntry.Name</p>
                 <p>@Model.DexEntry.Category</p>
 
-                <p>@Model.DexEntry.Type1</p>
-                <p>@Model.DexEntry.Type2</p>
+                <p class="type-icon @Model.DexEntry.Type1">@Model.DexEntry.Type1</p>
+
+                @if (@Model.DexEntry.Type2 != null)
+                {
+                    <p class="type-icon @Model.DexEntry.Type2">@Model.DexEntry.Type2</p>
+                }
 
                 <p>@Model.DexEntry.Height</p>
                 <p>@Model.DexEntry.Weight</p>
