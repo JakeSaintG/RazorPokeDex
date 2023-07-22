@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using RazorPokedex.Data;
 using System;
 
@@ -19,8 +20,6 @@ public class LogModel : PageModel
         _context = context;
     }
 
-    public void OnGet()
-    {
-        DexEntries = _context.PokeDexEntries.ToList();
-    }
+    public async void OnGetAsync() => DexEntries = await _context.PokeDexEntries.ToListAsync();
+
 }

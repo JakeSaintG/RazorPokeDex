@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPokedex.Data;
+using RazorPokedex.Repositories;
 using System.Text.RegularExpressions;
 
 namespace RazorPokedex.Pages;
@@ -31,73 +32,30 @@ public class AddOrEditPkmnModel : PageModel
         "Fairy"
     };
     private readonly Context _context;
+    private IAddOrEditPkmnRepository _addOrEditPkmnRepository;
 
     [BindProperty]
     public PokeDexEntry? AddOrEditEntry { get; set; }
 
-    public AddOrEditPkmnModel(Context context)
+    public AddOrEditPkmnModel(Context context, IAddOrEditPkmnRepository addOrEditPkmnRepository)
     {
         _context = context;
+        _addOrEditPkmnRepository = addOrEditPkmnRepository;
     }
 
-    public async void OnGetAsync(string id)
+    public void OnGetAsync(string id)
     {
         if (id != null)
         {
             AddOrEditEntry = _context.PokeDexEntries.FromSql($"SELECT * FROM PokeDexEntries WHERE Id = {id} LIMIT 1").Single();
-            PageHeader = $"Edit Dex Entry:{AddOrEditEntry.Name}";
+            PageHeader = $"Edit Dex Entry: {AddOrEditEntry.Name}";
         }
     }
 
     //IActionResult allows Razor to redirect to a page at the end of execution
-    public IActionResult OnPost()
+    public async Task<IActionResult> OnPostAsync()
     {
-        var editedEntry = new PokeDexEntry();
-
-        if (AddOrEditEntry.Id == null)
-        {
-            editedEntry = AddOrEditEntry;
-
-            editedEntry.Id = Guid.NewGuid().ToString();
-            editedEntry.IsHomebrew = true;
-
-            //TODO: Placeholder; hardcoded for now
-            editedEntry.ImageURL = "https://www.serebii.net/pokearth/sprites/rb/000.png";
-
-            _context.PokeDexEntries.Add(editedEntry);
-        }
-        else
-        {
-            editedEntry = _context.PokeDexEntries.FromSql($"SELECT * FROM PokeDexEntries WHERE Id = {AddOrEditEntry.Id} LIMIT 1").Single();
-
-            //TODO: Temporary. Merge these objs.
-            if (editedEntry.Name != AddOrEditEntry.Name)
-                editedEntry.Name = AddOrEditEntry.Name;
-
-            if (editedEntry.Type1 != AddOrEditEntry.Type1)
-                editedEntry.Type1 = AddOrEditEntry.Type1;
-
-            if (editedEntry.Type2 != AddOrEditEntry.Type2)
-                editedEntry.Type2 = AddOrEditEntry.Type2;
-
-            if (editedEntry.Height != AddOrEditEntry.Height)
-                editedEntry.Height = AddOrEditEntry.Height;
-
-            if (editedEntry.Weight != AddOrEditEntry.Weight)
-                editedEntry.Weight = AddOrEditEntry.Weight;
-
-            if (editedEntry.Category != AddOrEditEntry.Category)
-                editedEntry.Category = AddOrEditEntry.Category;
-
-            if (editedEntry.FlavorTXT != AddOrEditEntry.FlavorTXT)
-                editedEntry.FlavorTXT = AddOrEditEntry.FlavorTXT;
-        }
-
-        if (editedEntry.Type1 == editedEntry.Type2)
-            editedEntry.Type2 = null;
-
-        _context.SaveChanges();
-
+        _addOrEditPkmnRepository.AddOrEditPkmn(AddOrEditEntry);
         return RedirectToPage("./Log");
     }
 }

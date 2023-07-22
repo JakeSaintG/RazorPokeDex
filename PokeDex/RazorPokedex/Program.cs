@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RazorPokedex.Data;
+using RazorPokedex.Repositories;
 using RazorPokedex.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IDbUtils, DbUtils>();
+builder.Services.AddScoped<IAddOrEditPkmnRepository, AddOrEditPkmnRepository>();
 
 builder.Services.AddRazorPages();
 
