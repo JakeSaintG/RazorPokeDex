@@ -15,19 +15,16 @@ public class DeleteModel : PageModel
         _context = new Context();
     }
 
-    public async void OnGetAsync(string id)
-    {
-        DexEntry = await _context.PokeDexEntries.SingleOrDefaultAsync(x => x.Id == id);
-    }
+    public async void OnGetAsync(string id) => DexEntry = await _context.PokeDexEntries.SingleOrDefaultAsync(x => x.Id == id);
 
-    public IActionResult OnPostDelete(string id)
+    public async Task<IActionResult> OnPostDeleteAsync(string id)
     {
-        PokeDexEntry? entryToDelete = _context.PokeDexEntries.SingleOrDefault(d => d.Id == id);
+        PokeDexEntry? entryToDelete = await _context.PokeDexEntries.SingleOrDefaultAsync(d => d.Id == id);
 
         if (entryToDelete != null)
             _context.PokeDexEntries.Remove(entryToDelete);
 
-        _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
         return RedirectToPage("../Log");
     }
 }

@@ -14,8 +14,4 @@
     <ProjectReference Include="..\RazorPokedex.Data\RazorPokedex.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
